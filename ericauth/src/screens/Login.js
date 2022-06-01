@@ -20,10 +20,7 @@ const Login = ({ navigation }) => {
   const [settingModal, setSettingModal] = useState(true);
   const [email, onChangeEmail] = React.useState("");
   const [password, onChangePassword] = React.useState("");
-  const toggleSettingModal = () => {
-    setSettingModal(!settingModal);
-    console.log(settingModal);
-  };
+  const [isStudent, setIsStudent] = useState(1);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,10 +32,22 @@ const Login = ({ navigation }) => {
       </View>
       <View style={styles.loginform}>
         <View style={styles.formflex1}>
-          <Image
+          <TouchableOpacity
             style={styles.formbox}
-            source={require("../../assets/Student.png")}
-          />
+            onPress={() => setIsStudent(1)}
+          >
+            {isStudent == 1 ? (
+              <Image
+                style={styles.formbox}
+                source={require("../../assets/Student.png")}
+              />
+            ) : (
+              <Image
+                style={styles.formbox}
+                source={require("../../assets/StudentOpa.png")}
+              />
+            )}
+          </TouchableOpacity>
         </View>
         <View
           style={{
@@ -48,10 +57,22 @@ const Login = ({ navigation }) => {
           }}
         />
         <View style={styles.formflex2}>
-          <Image
+          <TouchableOpacity
             style={styles.formbox}
-            source={require("../../assets/StudentCouncil.png")}
-          />
+            onPress={() => setIsStudent(0)}
+          >
+            {isStudent == 0 ? (
+              <Image
+                style={styles.formbox}
+                source={require("../../assets/StudentCouncil.png")}
+              />
+            ) : (
+              <Image
+                style={styles.formbox}
+                source={require("../../assets/StudentCouncilOpa.png")}
+              />
+            )}
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.textinput}>
