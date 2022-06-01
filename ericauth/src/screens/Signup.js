@@ -79,6 +79,7 @@ const Signup = ({ navigation }) => {
       AsyncStorage.setItem("qrData", data.data, () => {
         console.log("큐알네임 저장 : ", data.data);
       });
+      navigation.navigate("QrData");
     } else {
     }
   };
@@ -92,7 +93,7 @@ const Signup = ({ navigation }) => {
       </View>
       <View style={styles.qrbox}>
         {qrNameList.map((qr, index) => (
-          <View style={styles.parent}>
+          <View style={styles.parent} key={index}>
             <View style={styles.child1}>
               <Image
                 style={styles.qrbox2}
@@ -105,7 +106,12 @@ const Signup = ({ navigation }) => {
               <Text style={styles.textbox}>만료 날짜 : 23.06.08</Text>
             </View>
             <View style={styles.child3}>
-              <TouchableOpacity style={styles.btnbox}>
+              <TouchableOpacity
+                style={styles.btnbox}
+                onPress={() => {
+                  getQrData(qr);
+                }}
+              >
                 <Text style={styles.btntext}>View</Text>
               </TouchableOpacity>
             </View>
