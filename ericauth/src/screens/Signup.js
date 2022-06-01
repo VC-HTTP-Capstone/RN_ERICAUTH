@@ -25,7 +25,7 @@ const Container = styled.View`
 `;
 
 const Signup = ({ navigation }) => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("um123@naver.com");
   let qrNameList = [];
   const getQrList = async () => {
     console.log("Fetched");
@@ -47,11 +47,9 @@ const Signup = ({ navigation }) => {
       }),
     };
     let response = await fetch(url, options);
-    console.log(response);
     let responseOK = response && response.ok;
     if (responseOK) {
       let data = await response.json();
-      console.log(data);
     } else {
     }
   };
