@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Button, View, Text } from 'react-native';
+import { Text } from 'react-native';
 
-const Container = styled.SafeAreaView`
-    background-color: #ffffff;
+const Container = styled.View`
+    flex: 1;
+    justify-content: center;
     align-items: center;
+    background-color: ${({ theme }) => theme.background};
 `;
 
-const Signup = ({ navigation }) => {
+const Signup = () => {
     return (
         <Container>
-            <Button
-                title="go to the login screen"
-                onPress={() => navigation.navigate('Login')}
-            />
+            <Text style={{ fontSize: 30 }}>Signup Screen</Text>
         </Container>
-    )
-}
+    );
+};
+
 export default Signup;

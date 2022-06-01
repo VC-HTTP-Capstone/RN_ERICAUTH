@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ThemeContext } from 'styled-components/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Login from '../screens/Login';
-import Signup from '../screens/Signup';
+import { Login, Signup } from '../screens';
 
 const Stack = createStackNavigator();
 
-const AuthNavigation = () => {
+const AuthStack = () => {
+    const theme = useContext(ThemeContext);
     return (
         <Stack.Navigator
             initialRouteName='Login'
-            screenOptions={{ cardStyle: { backgroundColor: '#ffffff' } }}
+            screenOptions={{
+                headerTitleAlign: 'center',
+                cardStyle: { backgroundColor: theme.backgroundColor },
+            }}
         >
             <Stack.Screen
                 name="Login"
@@ -25,8 +29,9 @@ const AuthNavigation = () => {
                     headerShown: false,
                 }}
             />
+
         </Stack.Navigator>
     );
 };
 
-export default AuthNavigation;
+export default AuthStack;
