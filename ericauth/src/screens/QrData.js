@@ -16,6 +16,8 @@ import * as config from "../config";
 import styled from "styled-components/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import QRCode from "react-native-qrcode-svg";
+import { Fonts } from "../Fonts";
+import * as Font from "expo-font";
 
 const QrData = ({ navigation }) => {
   const [qrData, setQrData] = useState("null");
@@ -34,6 +36,12 @@ const QrData = ({ navigation }) => {
     });
   };
   useEffect(() => {
+    async function fetchdata() {
+      await Font.loadAsync({
+        BMJUA: require("../../assets/fonts/BMJUA.ttf"),
+      });
+    }
+    fetchdata();
     getData();
   }, []);
   return (
@@ -84,9 +92,11 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 30,
     marginLeft: "12.5%",
+    fontFamily: "BMJUA",
   },
   title: {
     fontSize: 30,
+    fontFamily: "BMJUA",
   },
   qrbox: {
     flex: 9,
@@ -127,6 +137,7 @@ const styles = StyleSheet.create({
   },
   btntext: {
     color: "white",
+    fontFamily: "BMJUA",
   },
   backimg: {
     height: "50%",

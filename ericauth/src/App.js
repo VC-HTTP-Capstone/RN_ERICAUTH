@@ -31,6 +31,12 @@ const Container = styled.SafeAreaView`
 export default function App() {
   const [IsReady, setIsReady] = useState(false);
   useEffect(() => {
+    async function fetchdata() {
+      await Font.loadAsync({
+        BMJUA: require("../assets/fonts/BMJUA.ttf"),
+      });
+    }
+    fetchdata();
     async function prepare() {
       try {
         // 리소스를 가져오는 동안 스플래시 화면 표시

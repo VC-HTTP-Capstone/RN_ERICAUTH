@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -16,6 +16,7 @@ import * as config from "../config";
 import styled from "styled-components/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import QRCode from "react-native-qrcode-svg";
+import { Fonts } from "../Fonts";
 
 const Login = ({ navigation }) => {
   const [email, onChangeEmail] = React.useState("");
@@ -25,7 +26,6 @@ const Login = ({ navigation }) => {
   const failedLogin = () => {
     Alert.alert("로그인 실패!");
   };
-
   const getLogin = async () => {
     let url = config.Server_URL + "/api/login";
     if (isStudent === 0) {
@@ -209,6 +209,7 @@ const styles = StyleSheet.create({
   },
   btntext: {
     color: "white",
+    fontFamily: "BMJUA",
   },
 });
 

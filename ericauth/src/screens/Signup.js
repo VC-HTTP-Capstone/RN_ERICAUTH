@@ -138,12 +138,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#2F3A4D",
     justifyContent: "center",
     alignItems: "center",
+    fontFamily: Fonts.BMJUA,
   },
   qrbox: {
     flex: 9,
   },
   navtext: {
     color: "white",
+    fontFamily: Fonts.BMJUA,
   },
   qrbox2: {
     resizeMode: "contain",
@@ -182,6 +184,7 @@ const styles = StyleSheet.create({
   },
   btntext: {
     color: "white",
+    fontFamily: Fonts.BMJUA,
   },
   textbox: {
     marginBottom: "2%",
