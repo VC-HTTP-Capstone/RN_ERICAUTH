@@ -26,7 +26,7 @@ const Container = styled.View`
 
 const Signup = ({ navigation }) => {
   const [email, setEmail] = useState("um123@naver.com");
-  let qrNameList = [];
+  const [qrNameList, setQrNameList] = useState([]);
   const getQrList = async () => {
     console.log("Fetched");
     AsyncStorage.getItem("email", (err, result) => {
@@ -50,6 +50,7 @@ const Signup = ({ navigation }) => {
     let responseOK = response && response.ok;
     if (responseOK) {
       let data = await response.json();
+      setQrNameList(data.qrNames);
     } else {
     }
   };
@@ -61,7 +62,11 @@ const Signup = ({ navigation }) => {
       <View style={styles.navbar}>
         <Text style={styles.navtext}> 인증서 목록 </Text>
       </View>
-      <View style={styles.qrbox}></View>
+      <View style={styles.qrbox}>
+        {qrNameList.map((qr, index) => (
+          <Text>{qr}</Text>
+        ))}
+      </View>
     </SafeAreaView>
   );
 };
