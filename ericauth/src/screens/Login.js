@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     flex: 1.2,
     justifyContent: "center",
     flexDirection: "row",
+    padding: "1%",
   },
   textinput: {
     flex: 2.8,
@@ -124,13 +125,13 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
-    marginLeft: "6%",
+    marginLeft: "5%",
   },
   formflex2: {
     flex: 1,
     width: "100%",
     height: "100%",
-    marginRight: "6%",
+    marginRight: "5%",
   },
   input: {
     height: "30%",
