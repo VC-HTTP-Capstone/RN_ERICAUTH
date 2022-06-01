@@ -17,7 +17,7 @@ import styled from "styled-components/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import QRCode from "react-native-qrcode-svg";
 import { Fonts } from "../Fonts";
-
+import * as Font from "expo-font";
 const Container = styled.View`
   flex: 1;
   justify-content: center;
@@ -84,6 +84,12 @@ const Signup = ({ navigation }) => {
     }
   };
   useEffect(() => {
+    async function fetchdata() {
+      await Font.loadAsync({
+        BMJUA: require("../../assets/fonts/BMJUA.ttf"),
+      });
+    }
+    fetchdata();
     getQrList();
   }, []);
   return (
