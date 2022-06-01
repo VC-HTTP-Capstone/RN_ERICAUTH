@@ -10,6 +10,7 @@ import {
   ImageBackground,
   Button,
   SafeAreaView,
+  Alert,
 } from "react-native";
 import * as config from "../config";
 import styled from "styled-components/native";
@@ -22,6 +23,47 @@ const Login = ({ navigation }) => {
   const [password, onChangePassword] = React.useState("");
   const [isStudent, setIsStudent] = useState(1);
 
+  const failedLogin = () =>
+    Alert.alert("로그인 실패!", [
+      {
+        text: "Cancel",
+        onPress: () => {
+          console.log("cancel pressed");
+        },
+        style: "cancel",
+      },
+    ]);
+
+  const getLogin = async () => {
+    let url = config.Server_URL + "/api/login";
+    if (isStudent === 0) {
+      url = config.Server_URL + "/api/login/admin";
+    }
+    let options = {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    };
+    let response = await fetch(url, options);
+    let responseOK = response && response.ok;
+    if (responseOK) {
+      let data = await response.json();
+      AsyncStorage.setItem("email", email, () => {
+        console.log("이메일 저장 : ", email);
+      });
+      console.log(data);
+      navigation.navigate("Signup");
+    } else {
+      failedLogin();
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.background}>
@@ -91,7 +133,7 @@ const Login = ({ navigation }) => {
         />
       </View>
       <View style={styles.signbox}>
-        <TouchableOpacity style={styles.btnbox}>
+        <TouchableOpacity style={styles.btnbox} onPress={getLogin}>
           <Text style={styles.btntext}>로그인</Text>
         </TouchableOpacity>
       </View>
@@ -172,7 +214,6 @@ const styles = StyleSheet.create({
   },
   btntext: {
     color: "white",
-    fontSize: "150%",
   },
 });
 
