@@ -17,7 +17,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import QRCode from "react-native-qrcode-svg";
 
 const Login = ({ navigation }) => {
-  const [settingModal, setSettingModal] = useState(true);
   const [email, onChangeEmail] = React.useState("");
   const [password, onChangePassword] = React.useState("");
   const [isStudent, setIsStudent] = useState(1);
@@ -27,7 +26,7 @@ const Login = ({ navigation }) => {
       <View style={styles.background}>
         <ImageBackground
           style={styles.bgimg}
-          source={require("../../assets/Frame.png")}
+          source={require("../../assets/Frame2.png")}
         ></ImageBackground>
       </View>
       <View style={styles.loginform}>
@@ -51,7 +50,7 @@ const Login = ({ navigation }) => {
         </View>
         <View
           style={{
-            flex: 4,
+            flex: 6,
             width: "100%",
             height: "100%",
           }}
@@ -107,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   background: {
-    flex: 3,
+    flex: 3.3,
   },
   loginform: {
     flex: 1.2,
@@ -116,7 +115,7 @@ const styles = StyleSheet.create({
     padding: "1%",
   },
   textinput: {
-    flex: 2.8,
+    flex: 2.6,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -130,7 +129,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   passwordbox2: {
-    flex: 0.8,
+    flex: 0.7,
     backgroundColor: "#4C5A72",
   },
   bgimg: {
@@ -143,16 +142,16 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   formflex1: {
-    flex: 1,
+    flex: 2,
     width: "100%",
     height: "100%",
-    marginLeft: "5%",
+    marginLeft: "10%",
   },
   formflex2: {
-    flex: 1,
+    flex: 2,
     width: "100%",
     height: "100%",
-    marginRight: "5%",
+    marginRight: "10%",
   },
   input: {
     height: "30%",
@@ -163,7 +162,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F4F5F7",
   },
   btnbox: {
-    borderWidth: 1,
     height: "84%",
     width: "80%",
     backgroundColor: "#2D9CDB",
@@ -172,7 +170,6 @@ const styles = StyleSheet.create({
   },
   btntext: {
     color: "white",
-    fontSize: "150%",
   },
 });
 
