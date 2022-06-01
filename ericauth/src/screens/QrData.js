@@ -16,7 +16,6 @@ import * as config from "../config";
 import styled from "styled-components/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import QRCode from "react-native-qrcode-svg";
-import QrList from "./qrList";
 
 const QrData = ({ navigation }) => {
   return <Text>Hello World!</Text>;

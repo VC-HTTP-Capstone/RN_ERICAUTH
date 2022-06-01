@@ -16,6 +16,7 @@ import * as config from "../config";
 import styled from "styled-components/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import QRCode from "react-native-qrcode-svg";
+import { Fonts } from "../Fonts";
 
 const Container = styled.View`
   flex: 1;
@@ -99,9 +100,9 @@ const Signup = ({ navigation }) => {
               />
             </View>
             <View style={styles.child2}>
-              <Text>이름 : {qr}</Text>
-              <Text>발급 날짜 : 22.06.08</Text>
-              <Text>만료 날짜 : 23.06.08</Text>
+              <Text style={styles.textbox}>이름 : {qr}</Text>
+              <Text style={styles.textbox}>발급 날짜 : 22.06.08</Text>
+              <Text style={styles.textbox}>만료 날짜 : 23.06.08</Text>
             </View>
             <View style={styles.child3}>
               <TouchableOpacity style={styles.btnbox}>
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   qrbox: {
-    flex: 8,
+    flex: 9,
   },
   navtext: {
     color: "white",
@@ -169,6 +170,11 @@ const styles = StyleSheet.create({
   },
   btntext: {
     color: "white",
+  },
+  textbox: {
+    marginBottom: "2%",
+    marginTop: "2%",
+    fontFamily: Fonts.BMJUA,
   },
 });
 
