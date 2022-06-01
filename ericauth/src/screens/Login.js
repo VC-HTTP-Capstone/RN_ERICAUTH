@@ -13,10 +13,13 @@ import {
 } from "react-native";
 import * as config from "../config";
 import styled from "styled-components/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import QRCode from "react-native-qrcode-svg";
 
 const Login = ({ navigation }) => {
   const [settingModal, setSettingModal] = useState(true);
-
+  const [email, onChangeEmail] = React.useState("");
+  const [password, onChangePassword] = React.useState("");
   const toggleSettingModal = () => {
     setSettingModal(!settingModal);
     console.log(settingModal);
@@ -32,7 +35,7 @@ const Login = ({ navigation }) => {
       </View>
       <View style={styles.loginform}>
         <View style={styles.formflex1}>
-          <TouchableOpacity onPress={() => this.toggleSettingModal()}>
+          <TouchableOpacity onPress={() => {}}>
             <Image
               style={styles.formbox}
               source={require("../../assets/Student.png")}
@@ -53,7 +56,21 @@ const Login = ({ navigation }) => {
           />
         </View>
       </View>
-      <View style={styles.textinput}></View>
+      <View style={styles.textinput}>
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangeEmail}
+          value={email}
+          placeholder="이메일"
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={onChangePassword}
+          value={password}
+          placeholder="비밀번호"
+          secureTextEntry={true}
+        />
+      </View>
       <View style={styles.signbox}></View>
       <View style={styles.passwordbox}></View>
     </View>
@@ -103,6 +120,12 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     marginRight: "10%",
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
 
