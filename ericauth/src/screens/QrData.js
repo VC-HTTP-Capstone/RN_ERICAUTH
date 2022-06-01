@@ -39,7 +39,15 @@ const QrData = ({ navigation }) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.navbar}>
-        <Text style={styles.navtext}> ERICAUTH </Text>
+        <View style={styles.child4}>
+          <Image
+            style={styles.backimg}
+            source={require("../../assets/back.png")}
+          />
+        </View>
+        <View style={styles.child5}>
+          <Text style={styles.navtext}> ERICAUTH </Text>
+        </View>
       </View>
       <View style={styles.qrbox}>
         <View style={styles.child1}>
@@ -69,12 +77,13 @@ const styles = StyleSheet.create({
   navbar: {
     flex: 1,
     backgroundColor: "#2F3A4D",
-    justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row",
   },
   navtext: {
     color: "white",
     fontSize: 30,
+    marginLeft: "12.5%",
   },
   title: {
     fontSize: 30,
@@ -118,6 +127,17 @@ const styles = StyleSheet.create({
   },
   btntext: {
     color: "white",
+  },
+  backimg: {
+    height: "50%",
+  },
+  child4: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  child5: {
+    flex: 4,
   },
 });
 
