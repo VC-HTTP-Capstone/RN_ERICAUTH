@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -58,7 +58,33 @@ const Signup = ({ navigation }) => {
   useEffect(() => {
     getQrList();
   });
-  return <Text>Hello World!!</Text>;
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.navbar}>
+        <Text style={styles.navtext}> 인증서 목록 </Text>
+      </View>
+      <View style={styles.qrbox}></View>
+    </SafeAreaView>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+  navbar: {
+    flex: 1,
+    backgroundColor: "#2F3A4D",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  qrbox: {
+    flex: 8,
+  },
+  navtext: {
+    color: "white",
+  },
+});
 
 export default Signup;

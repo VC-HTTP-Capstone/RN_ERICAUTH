@@ -115,12 +115,16 @@ const Login = ({ navigation }) => {
           onChangeText={onChangeEmail}
           value={email}
           placeholder="이메일"
+          autoComplete="off"
+          autoCapitalize="none"
         />
         <TextInput
           style={styles.input}
           onChangeText={onChangePassword}
           value={password}
           placeholder="비밀번호"
+          autoComplete="off"
+          autoCapitalize="none"
           secureTextEntry={true}
         />
       </View>
@@ -141,16 +145,16 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   background: {
-    flex: 3.3,
+    flex: 3.6,
   },
   loginform: {
-    flex: 1.2,
+    flex: 1.0,
     justifyContent: "center",
     flexDirection: "row",
     padding: "1%",
   },
   textinput: {
-    flex: 2.6,
+    flex: 2.5,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -164,7 +168,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
   passwordbox2: {
-    flex: 0.7,
+    flex: 0.6,
     backgroundColor: "#4C5A72",
   },
   bgimg: {
