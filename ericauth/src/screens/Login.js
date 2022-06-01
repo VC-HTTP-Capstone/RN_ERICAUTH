@@ -71,10 +71,11 @@ const Login = ({ navigation }) => {
       </View>
       <View style={styles.signbox}>
         <TouchableOpacity style={styles.btnbox}>
-          <Text style={styles.btntext}>My button</Text>
+          <Text style={styles.btntext}>로그인</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.passwordbox}></View>
+      <View style={styles.passwordbox1}></View>
+      <View style={styles.passwordbox2}></View>
     </SafeAreaView>
   );
 };
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
   },
   loginform: {
     flex: 1.2,
+    justifyContent: "center",
     flexDirection: "row",
   },
   textinput: {
@@ -101,9 +103,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  passwordbox: {
-    flex: 1,
-    backgroundColor: "blue",
+  passwordbox1: {
+    flex: 0.2,
+    backgroundColor: "white",
+  },
+  passwordbox2: {
+    flex: 0.8,
+    backgroundColor: "#4C5A72",
   },
   bgimg: {
     width: "100%",
@@ -118,19 +124,20 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
-    marginLeft: "10%",
+    marginLeft: "6%",
   },
   formflex2: {
     flex: 1,
     width: "100%",
     height: "100%",
-    marginRight: "10%",
+    marginRight: "6%",
   },
   input: {
     height: "30%",
     width: "80%",
     paddingLeft: "5%",
-    marginBottom: "2%",
+    marginBottom: "1%",
+    marginTop: "1%",
     backgroundColor: "#F4F5F7",
   },
   btnbox: {
