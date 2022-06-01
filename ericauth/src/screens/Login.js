@@ -22,16 +22,9 @@ const Login = ({ navigation }) => {
   const [password, onChangePassword] = React.useState("");
   const [isStudent, setIsStudent] = useState(1);
 
-  const failedLogin = () =>
-    Alert.alert("로그인 실패!", [
-      {
-        text: "Cancel",
-        onPress: () => {
-          console.log("cancel pressed");
-        },
-        style: "cancel",
-      },
-    ]);
+  const failedLogin = () => {
+    Alert.alert("로그인 실패!");
+  };
 
   const getLogin = async () => {
     let url = config.Server_URL + "/api/login";

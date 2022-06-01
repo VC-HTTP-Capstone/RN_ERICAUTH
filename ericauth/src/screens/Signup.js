@@ -10,7 +10,7 @@ const Container = styled.View`
 `;
 
 const Signup = () => {
-  return <div>Hello World!!</div>;
+  return <Text>Hello World!!</Text>;
 };
 
 export default Signup;
