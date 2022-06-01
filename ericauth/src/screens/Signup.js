@@ -10,17 +10,7 @@ const Container = styled.View`
 `;
 
 const Signup = () => {
-  return (
-    <Container>
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="useless placeholder"
-        keyboardType="numeric"
-      />
-    </Container>
-  );
+  return <div>Hello World!!</div>;
 };
 
 export default Signup;
