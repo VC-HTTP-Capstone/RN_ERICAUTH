@@ -26,7 +26,7 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.background}>
         <ImageBackground
           style={styles.bgimg}
@@ -35,12 +35,10 @@ const Login = ({ navigation }) => {
       </View>
       <View style={styles.loginform}>
         <View style={styles.formflex1}>
-          <TouchableOpacity onPress={() => {}}>
-            <Image
-              style={styles.formbox}
-              source={require("../../assets/Student.png")}
-            />
-          </TouchableOpacity>
+          <Image
+            style={styles.formbox}
+            source={require("../../assets/Student.png")}
+          />
         </View>
         <View
           style={{
@@ -71,30 +69,37 @@ const Login = ({ navigation }) => {
           secureTextEntry={true}
         />
       </View>
-      <View style={styles.signbox}></View>
+      <View style={styles.signbox}>
+        <TouchableOpacity style={styles.btnbox}>
+          <Text style={styles.btntext}>My button</Text>
+        </TouchableOpacity>
+      </View>
       <View style={styles.passwordbox}></View>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white",
   },
   background: {
     flex: 3,
   },
   loginform: {
-    flex: 1,
+    flex: 1.2,
     flexDirection: "row",
   },
   textinput: {
-    flex: 3,
-    backgroundColor: "blue",
+    flex: 2.8,
+    justifyContent: "center",
+    alignItems: "center",
   },
   signbox: {
     flex: 1,
-    backgroundColor: "red",
+    justifyContent: "center",
+    alignItems: "center",
   },
   passwordbox: {
     flex: 1,
@@ -122,10 +127,23 @@ const styles = StyleSheet.create({
     marginRight: "10%",
   },
   input: {
-    height: 40,
-    margin: 12,
+    height: "30%",
+    width: "80%",
+    paddingLeft: "5%",
+    marginBottom: "2%",
+    backgroundColor: "#F4F5F7",
+  },
+  btnbox: {
     borderWidth: 1,
-    padding: 10,
+    height: "84%",
+    width: "80%",
+    backgroundColor: "#2D9CDB",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  btntext: {
+    color: "white",
+    fontSize: "150%",
   },
 });
 
