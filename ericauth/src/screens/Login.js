@@ -51,7 +51,11 @@ const Login = ({ navigation }) => {
         console.log("이메일 저장 : ", email);
       });
       console.log(data);
-      navigation.navigate("Signup");
+      if (isStudent === 1) {
+        navigation.navigate("Signup");
+      } else {
+        navigation.navigate("EventList");
+      }
     } else {
       failedLogin();
     }

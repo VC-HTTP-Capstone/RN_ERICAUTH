@@ -26,17 +26,17 @@ const Container = styled.View`
   background-color: ${({ theme }) => theme.background};
 `;
 
-const Signup = ({ navigation }) => {
+const EventList = ({ navigation }) => {
   const [email, setEmail] = useState("um12@naver.com");
-  const [qrNameList, setQrNameList] = useState([]);
-  const getQrList = async () => {
+  const [eventNameList, setEventNameList] = useState([]);
+  const getEventList = async () => {
     // console.log("Fetched");
     AsyncStorage.getItem("email", (err, result) => {
       setEmail(result);
     });
     // console.log(email);
     // console.log("Fetched");
-    let url = config.Server_URL + "/api/qr";
+    let url = config.Server_URL + "/api/event";
     let options = {
       method: "POST",
       mode: "cors",
@@ -52,37 +52,15 @@ const Signup = ({ navigation }) => {
     let responseOK = response && response.ok;
     if (responseOK) {
       let data = await response.json();
-      setQrNameList(data.qrNames);
+      setEventNameList(data.eventNames);
     } else {
     }
   };
-  const getQrData = async (qrName) => {
-    AsyncStorage.setItem("qrName", qrName, () => {
-      console.log("큐알네임 저장 : ", qrName);
+  const getVerify = async (eventName) => {
+    AsyncStorage.setItem("eventName", eventName, () => {
+      console.log("이벤트네임 저장 : ", eventName);
     });
-    let url = config.Server_URL + "/api/qr/info";
-    let options = {
-      method: "POST",
-      mode: "cors",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json;charset=UTF-8",
-      },
-      body: JSON.stringify({
-        email: email,
-        qrName: qrName,
-      }),
-    };
-    let response = await fetch(url, options);
-    let responseOK = response && response.ok;
-    if (responseOK) {
-      let data = await response.json();
-      AsyncStorage.setItem("qrData", data.data, () => {
-        console.log("큐알네임 저장 : ", data.data);
-      });
-      navigation.navigate("QrData");
-    } else {
-    }
+    navigation.navigate("Verify");
   };
   useEffect(() => {
     async function fetchdata() {
@@ -90,40 +68,40 @@ const Signup = ({ navigation }) => {
         BMJUA: require("../../assets/fonts/BMJUA.ttf"),
       });
     }
-    fetchdata();
     AsyncStorage.getItem("email", (err, result) => {
       setEmail(result);
     });
-    getQrList();
-    console.log(email);
+    fetchdata();
+    getEventList();
+    console.log(eventNameList);
     DeviceEventEmitter.addListener("getDataAgain", () => {
-      getQrList();
+      getEventList();
     });
   }, [email]);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.navbar}>
-        <Text style={styles.navtext}> 인증서 목록 </Text>
+        <Text style={styles.navtext}> 행사 목록 </Text>
       </View>
       <View style={styles.qrbox}>
-        {qrNameList.map((qr, index) => (
+        {eventNameList.map((event, index) => (
           <View style={styles.parent} key={index}>
             <View style={styles.child1}>
               <Image
                 style={styles.qrbox2}
-                source={require("../../assets/qr.png")}
+                source={require("../../assets/Event.png")}
               />
             </View>
             <View style={styles.child2}>
-              <Text style={styles.textbox}>이름 : {qr}</Text>
-              <Text style={styles.textbox}>발급 날짜 : 22.06.08</Text>
+              <Text style={styles.textbox}>이름 : {event}</Text>
+              <Text style={styles.textbox}>개최 날짜 : 22.06.08</Text>
               <Text style={styles.textbox}>만료 날짜 : 23.06.08</Text>
             </View>
             <View style={styles.child3}>
               <TouchableOpacity
                 style={styles.btnbox}
                 onPress={() => {
-                  getQrData(qr);
+                  getVerify(event);
                 }}
               >
                 <Text style={styles.btntext}>View</Text>
@@ -201,4 +179,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Signup;
+export default EventList;
