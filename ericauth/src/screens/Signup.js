@@ -18,6 +18,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import QRCode from "react-native-qrcode-svg";
 import { Fonts } from "../Fonts";
 import * as Font from "expo-font";
+import { DeviceEventEmitter } from "react-native";
 const Container = styled.View`
   flex: 1;
   justify-content: center;
@@ -29,12 +30,12 @@ const Signup = ({ navigation }) => {
   const [email, setEmail] = useState("um123@naver.com");
   const [qrNameList, setQrNameList] = useState([]);
   const getQrList = async () => {
-    console.log("Fetched");
+    // console.log("Fetched");
     AsyncStorage.getItem("email", (err, result) => {
       setEmail(result);
     });
-    console.log(email);
-    console.log("Fetched");
+    // console.log(email);
+    // console.log("Fetched");
     let url = config.Server_URL + "/api/qr";
     let options = {
       method: "POST",
@@ -91,6 +92,9 @@ const Signup = ({ navigation }) => {
     }
     fetchdata();
     getQrList();
+    DeviceEventEmitter.addListener("getDataAgain", () => {
+      getQrList();
+    });
   }, []);
   return (
     <SafeAreaView style={styles.container}>
