@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { ThemeContext } from "styled-components/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Login, QrData, Signup } from "../screens";
+import EventList from "../screens/EventList";
+import Verify from "../screens/Verify";
 
 const Stack = createStackNavigator();
 
@@ -33,6 +35,22 @@ const AuthStack = () => {
       <Stack.Screen
         name="QrData"
         component={QrData}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="EventList"
+        component={EventList}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="Verify"
+        component={Verify}
         options={{
           headerShown: false,
         }}
