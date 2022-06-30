@@ -65,7 +65,12 @@ const QrData = ({ navigation }) => {
           <QRCode size={300} value={qrData} />
         </View>
         <View style={styles.child3}>
-          <TouchableOpacity style={styles.btnbox1}>
+          <TouchableOpacity
+            style={styles.btnbox1}
+            onPress={() => {
+              navigation.navigate("Signup");
+            }}
+          >
             <Text style={styles.btntext}>확인</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.btnbox2}>
